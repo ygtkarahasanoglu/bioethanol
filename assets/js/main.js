@@ -41,5 +41,27 @@
         navToggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revealEls.length) {
+      // Opt in to the hidden/animated state only now that we can guarantee
+      // JS will reveal it — content was visible by default until this point.
+      document.body.classList.add('js-reveal-ready');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px 80px 0px' });
+      revealEls.forEach(function (el) { io.observe(el); });
+      // Safety net: never let content stay invisible for long, whatever happens.
+      window.setTimeout(function () {
+        revealEls.forEach(function (el) { el.classList.add('in-view'); });
+      }, 2500);
+    }
+    // No IntersectionObserver support (or no .reveal elements): do nothing —
+    // sections are already fully visible by default (see CSS).
   });
 })();
