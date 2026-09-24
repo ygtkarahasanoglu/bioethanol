@@ -3,78 +3,473 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bitenol — Kişiye Özel Masaüstü Biyoetanol Şömine</title>
-<meta name="description" content="Bitenol: minimalist, kişiselleştirilebilir masaüstü biyoetanol şömine. Türkiye'de tasarlanır, ısıya dayanıklı akrilik tüp ve fan kontrollü alev sistemiyle üretilir.">
+<meta name="description" content="Bitenol — lüks masaüstü biyoetanol şömine. İçeride ve dışarıda, aynı ayrıcalık, aynı sıcaklık.">
+<meta property="og:title" content="Bitenol — Ateş, artık yer tanımıyor.">
+<meta property="og:description" content="Lüks, kişiselleştirilebilir masaüstü biyoetanol şömine. İçeride, dışarıda — aynı ayrıcalık.">
+<meta property="og:type" content="website">
+<title>Bitenol</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%230f1113'/%3E%3Cpath d='M24 8c1 6-6 8-6 14a6 6 0 0 0 12 0c0-2-1-3-1-3s2 1 2 5a7 7 0 0 1-14 0c0-8 8-9 7-16z' fill='%23e07a3f'/%3E%3C/svg%3E">
-<meta name="theme-color" content="#0f1113">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Bitenol">
-<meta property="og:title" content="Bitenol — Kişiye Özel Masaüstü Biyoetanol Şömine">
-<meta property="og:description" content="Isıya dayanıklı akrilik tüp, fitilli yakıt sistemi ve fan kontrollü alev — kişiselleştirilebilir bir tasarım nesnesi.">
-<meta property="og:image" content="assets/img/product-3.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bitenol — Kişiye Özel Masaüstü Biyoetanol Şömine">
-<meta name="twitter:description" content="Isıya dayanıklı akrilik tüp, fitilli yakıt sistemi ve fan kontrollü alev — kişiselleştirilebilir bir tasarım nesnesi.">
-<meta name="twitter:image" content="assets/img/product-3.jpg">
-</head>
-<body class="lang-tr">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Tailwind: structural utilities only — all color comes from our own CSS
+  // custom properties below, so theming stays single-source-of-truth.
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'], body: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+        maxWidth: { wrap: '1160px' },
+      }
+    }
+  };
+</script>
 
+<style>
+  /* ============================================================
+     TOKENS — light palette on bare :root (required default),
+     dark palette under prefers-color-scheme + explicit [data-theme]
+     overrides so both the host viewer's theme AND our own on-page
+     toggle (which just sets data-theme on <html>) resolve correctly.
+     ============================================================ */
+  :root {
+    --ink: #15171c;         /* near-black, cool graphite undertone */
+    --paper: #f1f1ee;       /* light ground — cool "frosted" white, not cream */
+    --surface: #ffffff;     /* card surface, light mode */
+    --surface-2: #e8e7e2;   /* secondary surface, light mode */
+    --border: #dcdad3;
+    --text: #1c1e22;
+    --text-dim: #5b5e63;
+    --ember: #d8481f;       /* flame root — primary accent */
+    --gold: #f2a93c;        /* flame tip — secondary accent, gradients only */
+    --ember-soft: rgba(216, 72, 31, 0.10);
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --shadow: 0 30px 60px -24px rgba(21, 23, 28, 0.25);
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eceae5;
+      --paper: #121316;
+      --surface: #1a1c20;
+      --surface-2: #202226;
+      --border: #2b2e33;
+      --text: #ece9e4;
+      --text-dim: #9c9fa4;
+      --ember: #e8622f;
+      --gold: #f4b95a;
+      --ember-soft: rgba(232, 98, 47, 0.14);
+      --glass-bg: rgba(26, 28, 32, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55);
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ink: #eceae5;
+    --paper: #121316;
+    --surface: #1a1c20;
+    --surface-2: #202226;
+    --border: #2b2e33;
+    --text: #ece9e4;
+    --text-dim: #9c9fa4;
+    --ember: #e8622f;
+    --gold: #f4b95a;
+    --ember-soft: rgba(232, 98, 47, 0.14);
+    --glass-bg: rgba(26, 28, 32, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+  }
+
+  /* ============================================================
+     BASE
+     ============================================================ */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--text);
+    font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .35s ease, color .35s ease;
+  }
+  ::selection { background: var(--ember); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .font-display { font-family: 'Fraunces', ui-serif, Georgia, serif; }
+
+  h1, h2, h3 { font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 480; line-height: 1.1; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+
+  /* every anchor target clears the sticky header */
+  section[id], main[id] { scroll-margin-top: 84px; }
+
+  .wrap { max-width: 1160px; margin-inline: auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+
+  .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .74rem; font-weight: 700; color: var(--ember); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; font-weight: 700; font-size: .92rem; padding: 13px 26px; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease, border-color .18s ease; cursor: pointer; border: 1px solid transparent; white-space: nowrap; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: linear-gradient(135deg, var(--ember), var(--gold)); color: #fff; box-shadow: 0 12px 28px -10px var(--ember-soft); }
+  .btn-primary:hover { box-shadow: 0 16px 34px -8px var(--ember-soft); transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--border); color: var(--text); background: transparent; }
+  .btn-ghost:hover { border-color: var(--ember); color: var(--ember); }
+  .btn:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+
+  .icon { width: 1.35em; height: 1.35em; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  /* ============================================================
+     HEADER — glass/frosted, referencing the product's acrylic tube
+     ============================================================ */
+  .site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; }
+  .header-shell { margin: 14px auto 0; max-width: 1160px; padding-inline: 16px; }
+  .header-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 10px 10px 22px;
+  }
+  .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem; letter-spacing: .02em; display: flex; align-items: center; gap: 8px; }
+  .logo .icon { color: var(--ember); }
+  .main-nav { display: none; gap: 4px; }
+  .main-nav a { font-size: .88rem; font-weight: 600; color: var(--text-dim); padding: 9px 14px; border-radius: 999px; transition: background-color .2s ease, color .2s ease; }
+  .main-nav a:hover { color: var(--text); background: var(--surface-2); }
+  @media (min-width: 960px) { .main-nav { display: flex; } }
+
+  .header-actions { display: flex; align-items: center; gap: 6px; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid transparent; color: var(--text-dim); cursor: pointer; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .icon-btn:hover { background: var(--surface-2); color: var(--text); }
+  .icon-btn:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+  .lang-btn { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .78rem; width: auto; padding: 0 12px; border: 1px solid var(--border); }
+  /* Own responsive display rule for the header CTA — deliberately not using
+     Tailwind's hidden/sm: utilities here: our own .btn base rule (below)
+     sets display unconditionally and loads after Tailwind's stylesheet,
+     so it would win the cascade and defeat Tailwind's responsive classes. */
+  .header-cta { display: none; }
+  @media (min-width: 640px) { .header-cta { display: inline-flex; } }
+  /* Our own hide/show utility — used instead of Tailwind's .hidden for
+     anything functionally load-bearing (like the menu icon swap), since
+     that must keep working even if the Tailwind CDN script is blocked
+     or slow for a given viewer. */
+  .is-hidden { display: none !important; }
+
+  /* mobile menu */
+  #mobileNav { display: none; position: absolute; top: calc(100% + 10px); left: 16px; right: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); padding: 10px; }
+  #mobileNav.open { display: block; animation: menuIn .18s ease both; }
+  #mobileNav a { display: block; padding: 12px 14px; border-radius: 12px; font-weight: 600; color: var(--text); }
+  #mobileNav a:hover { background: var(--surface-2); }
+  @keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero { padding-block: 64px 56px; overflow: clip; }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 44px; align-items: center; }
+  @media (min-width: 960px) { .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 60px; } }
+
+  .hero-title { font-size: clamp(2.1rem, 6vw, 3.6rem); }
+  .hero-title em { font-style: italic; background: linear-gradient(100deg, var(--ember), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-sub { max-width: 52ch; color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.12rem); margin-top: 18px; }
+  .trust-row { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 28px; }
+  .trust-item { display: flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 600; color: var(--text-dim); }
+  .trust-item .icon { width: 1.1em; height: 1.1em; color: var(--ember); }
+
+  .hero-media { position: relative; animation: floatIn .8s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes floatIn { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .hero-media::before {
+    content: ''; position: absolute; inset: -12% -20%;
+    background: radial-gradient(ellipse at 50% 30%, var(--ember-soft), transparent 65%);
+    filter: blur(20px); z-index: -1;
+  }
+  .hero-frame { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); background: #000; max-width: 360px; margin-inline: auto; }
+  .hero-frame img { aspect-ratio: 5/6; object-fit: cover; object-position: 50% 12%; width: 100%; }
+  .hero-frame video { aspect-ratio: 900/1574; object-fit: cover; width: 100%; display: block; }
+  @media (min-width: 960px) { .hero-frame { max-width: none; } }
+  .hero-badge {
+    position: absolute; left: 14px; bottom: 14px; z-index: 2;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(18,19,22,.6); border: 1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-radius: 999px; padding: 9px 16px 9px 12px; color: #f1f1ee;
+    font-size: .78rem; font-weight: 700; letter-spacing: .01em;
+  }
+  .hero-badge .icon { width: 15px; height: 15px; color: var(--gold); }
+
+  /* ============================================================
+     ÖZGÜRLÜK — indoor/outdoor freedom
+     ============================================================ */
+  .freedom-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 700px) { .freedom-grid { grid-template-columns: 1fr 1fr; } }
+  .freedom-card { border-radius: 20px; border: 1px solid rgba(241,241,238,.14); background: rgba(241,241,238,.04); padding: 34px 30px; }
+  .freedom-card .feature-icon { background: rgba(242,169,60,.14); color: var(--gold); }
+  .freedom-card h3 { font-size: 1.25rem; margin: 18px 0 10px; color: #f1f1ee; }
+  .freedom-card p { color: rgba(241,241,238,.66); font-size: .96rem; max-width: 42ch; }
+  .media-caption { font-size: .78rem; color: var(--text-dim); text-align: center; margin-top: 12px; opacity: .8; }
+
+  /* ============================================================
+     SECTIONS
+     ============================================================ */
+  .section { padding-block: 72px; border-top: 1px solid var(--border); }
+  .section-ink { background: var(--ink); color: var(--paper); border-top-color: transparent; }
+  .section-ink .text-dim-local { color: rgba(241,241,238,.62); }
+  .section-head { max-width: 62ch; margin-bottom: 40px; }
+  .section-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.35rem); margin-top: 10px; }
+  .section-lead { color: var(--text-dim); margin-top: 12px; font-size: 1.02rem; max-width: 58ch; }
+  .section-ink .section-lead { color: rgba(241,241,238,.68); }
+
+  /* feature grid */
+  .feature-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+  @media (min-width: 860px) { .feature-grid { grid-template-columns: .85fr 1.15fr; gap: 52px; align-items: start; } }
+  .feature-media { border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); max-width: 340px; margin-inline: auto; }
+  @media (min-width: 860px) { .feature-media { margin-inline: 0; max-width: none; } }
+  .feature-list { display: grid; gap: 4px; }
+  .feature-item { display: flex; gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--border); }
+  .feature-item:last-child { border-bottom: none; }
+  .feature-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--ember-soft); color: var(--ember); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .feature-item h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; }
+  .feature-item p { color: var(--text-dim); font-size: .94rem; max-width: 52ch; }
+
+  /* steps */
+  .steps-grid { display: grid; grid-template-columns: 1fr; gap: 0; counter-reset: step; }
+  @media (min-width: 760px) { .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+  .step-item { position: relative; padding: 26px 22px; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); }
+  @media (min-width: 760px) { .step-item + .step-item { margin-top: 0; } }
+  .step-item + .step-item { margin-top: 16px; }
+  @media (min-width: 760px) { .step-item + .step-item { margin-top: 0; } }
+  .step-num { font-family: 'Fraunces', serif; font-size: 2.1rem; color: transparent; -webkit-text-stroke: 1.5px var(--ember); opacity: .55; display: block; margin-bottom: 10px; }
+  .step-item h3 { font-size: 1.02rem; margin-bottom: 6px; }
+  .step-item p { color: var(--text-dim); font-size: .92rem; }
+
+  /* personalization tabs */
+  .tabs-shell { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 860px) { .tabs-shell { grid-template-columns: .8fr 1.2fr; align-items: start; } }
+  .tab-list { display: flex; overflow-x: auto; gap: 8px; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  @media (min-width: 860px) { .tab-list { flex-direction: column; overflow: visible; } }
+  .tab-btn { text-align: left; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); font-weight: 700; font-size: .92rem; color: var(--text-dim); cursor: pointer; transition: all .2s ease; white-space: nowrap; flex-shrink: 0; }
+  @media (min-width: 860px) { .tab-btn { white-space: normal; } }
+  .tab-btn:hover { border-color: var(--ember); }
+  .tab-btn[aria-selected="true"] { background: var(--ember-soft); border-color: var(--ember); color: var(--text); }
+  .tab-btn .tab-sub { display: block; font-weight: 500; font-size: .8rem; color: var(--text-dim); margin-top: 2px; }
+
+  .plate-mock { border-radius: 20px; border: 1px solid var(--border); background: var(--surface); padding: 44px 32px; text-align: center; position: relative; overflow: hidden; min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .plate-mock::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--ember-soft), transparent 60%); pointer-events: none; }
+  .plate-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; color: var(--ember); font-weight: 700; margin-bottom: 14px; }
+  .plate-text { font-family: 'Fraunces', serif; font-style: italic; font-size: clamp(1.3rem, 3vw, 1.7rem); line-height: 1.35; }
+
+  /* safety grid */
+  .safety-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 760px) { .safety-grid { grid-template-columns: repeat(3, 1fr); } }
+  .safety-item { display: flex; flex-direction: column; gap: 10px; }
+  .safety-item p { color: var(--text-dim); font-size: .92rem; max-width: 38ch; }
+  .disclaimer { font-size: .84rem; color: var(--text-dim); border-top: 1px solid var(--border); padding-top: 22px; margin-top: 36px; max-width: 72ch; }
+
+  /* FAQ accordion */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; background: none; border: none; text-align: left; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); cursor: pointer; }
+  .faq-q .icon { color: var(--ember); transition: transform .25s ease; flex-shrink: 0; }
+  .faq-item[data-open="true"] .faq-q .icon { transform: rotate(180deg); }
+  .faq-a { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+  .faq-item[data-open="true"] .faq-a { max-height: 240px; }
+  .faq-a-inner { padding-bottom: 20px; color: var(--text-dim); font-size: .95rem; max-width: 62ch; }
+
+  /* marketplace */
+  .market-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 640px) { .market-grid { grid-template-columns: repeat(3, 1fr); } }
+  .market-card { border-radius: 18px; border: 1px solid var(--border); background: var(--surface); padding: 30px 22px; text-align: center; transition: transform .2s ease, border-color .2s ease; }
+  .market-card:hover { transform: translateY(-4px); border-color: var(--ember); }
+  .market-card .icon { width: 30px; height: 30px; color: var(--ember); margin-inline: auto 10px; }
+  .market-name { font-family: 'Fraunces', serif; font-size: 1.2rem; margin-top: 10px; }
+  .market-status { display: inline-block; margin-top: 10px; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--ember); background: var(--ember-soft); padding: 5px 14px; border-radius: 999px; }
+
+  /* contact */
+  .contact-grid { display: grid; grid-template-columns: 1fr; gap: 36px; }
+  @media (min-width: 860px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+  .copy-row { display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); background: var(--surface); border-radius: 999px; padding: 6px 6px 6px 20px; max-width: 100%; }
+  .section-ink .copy-row { background: rgba(241,241,238,.06); border-color: rgba(241,241,238,.16); }
+  .copy-row span { font-weight: 700; font-size: .95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .copy-btn { flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: var(--ember); color: #fff; display: inline-flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: transform .15s ease; }
+  .copy-btn:active { transform: scale(.92); }
+  .copy-btn .icon { width: 16px; height: 16px; }
+
+  .field { display: grid; gap: 6px; margin-bottom: 16px; }
+  .field label { font-size: .82rem; font-weight: 700; color: var(--text-dim); }
+  .field input { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 12px; padding: 13px 16px; font-family: inherit; font-size: .95rem; transition: border-color .2s ease, box-shadow .2s ease; }
+  .field input:focus-visible { outline: none; border-color: var(--ember); box-shadow: 0 0 0 3px var(--ember-soft); }
+  .section-ink .field input { background: rgba(241,241,238,.06); border-color: rgba(241,241,238,.18); color: var(--paper); }
+  .form-note { font-size: .78rem; color: var(--text-dim); margin-top: 10px; }
+  .section-ink .form-note { color: rgba(241,241,238,.55); }
+  .form-success { display: none; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 14px; background: var(--ember-soft); color: var(--ember); font-weight: 700; font-size: .9rem; }
+  .form-success.show { display: flex; animation: menuIn .25s ease both; }
+
+  /* footer */
+  .site-footer { border-top: 1px solid var(--border); padding-block: 32px; }
+  .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; }
+  .footer-inner p { font-size: .82rem; color: var(--text-dim); }
+  .footer-links { display: flex; gap: 18px; }
+  .footer-links a { font-size: .82rem; color: var(--text-dim); }
+  .footer-links a:hover { color: var(--ember); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-media, #mobileNav.open, .form-success.show { animation: none; }
+    * { transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<!-- ================================================================
+     ICON SPRITE — hand-authored, Lucide-style minimal line icons.
+     Inlined (no external icon library) so every screen size and
+     viewer renders identically with zero dependency risk.
+     ================================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 2c1 5-5 6.5-5 11.5a5 5 0 0 0 10 0c0-1.8-.8-2.5-.8-2.5s1.6.9 1.6 4a6.8 6.8 0 0 1-13.6 0C4.2 8.5 11 8 12 2z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.8 3 8 7 9.5 4-1.5 7-4.7 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4.5"/></symbol>
+    <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2" y="7" width="17" height="10" rx="2.2"/><path d="M22 10v4"/><path d="m10.5 9-2 3.2h3L9.5 15"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6"/><path d="M10 3v6.2L5.3 17a2 2 0 0 0 1.7 3h10a2 2 0 0 0 1.7-3L14 9.2V3"/><path d="M8.2 14h7.6"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 3v8"/><path d="M7 5.5a8 8 0 1 0 10 0"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="M3 13h18"/><path d="M12 9v12"/><path d="M12 9c-2-3-7-3.2-7-.4C5 10 8 9.6 12 9Z"/><path d="M12 9c2-3 7-3.2 7-.4 0 1.4-3 1-7 .4Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 13 4.5 4.5L19 8"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4 7 7 0 0 0 20 14.5Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 16 8 21 21 8 16 3 3 16Z"/><path d="m8 11 2 2M11 8l2 2M14 5l2 2"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 6-6 2 2-6 6-2Z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5S3.5 15 3.5 9A4.5 4.5 0 0 1 12 6.5 4.5 4.5 0 0 1 20.5 9c0 6-8.5 11.5-8.5 11.5Z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m4 11 8-7 8 7"/><path d="M6 10v9.5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10"/></symbol>
+  </defs>
+</svg>
+
+<!-- ================================================================
+     HEADER
+     ================================================================ -->
 <header class="site-header">
-  <div class="wrap header-inner">
-    <a href="#top" class="logo">BITENOL</a>
-    <nav class="main-nav" id="mainNav">
+  <div class="header-shell relative">
+    <div class="header-glass">
+      <a href="#top" class="logo"><svg class="icon"><use href="#i-flame"/></svg>BITENOL</a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#ozgurluk" data-tr="İçeride & Dışarıda" data-en="Indoors & Outdoors">İçeride & Dışarıda</a>
+        <a href="#urun" data-tr="Ürün" data-en="Product">Ürün</a>
+        <a href="#nasil-calisir" data-tr="Nasıl Çalışır" data-en="How It Works">Nasıl Çalışır</a>
+        <a href="#kisisellestirme" data-tr="Kişiselleştirme" data-en="Personalization">Kişiselleştirme</a>
+        <a href="#guvenlik" data-tr="Kalite" data-en="Quality">Kalite</a>
+        <a href="#sss" data-tr="SSS" data-en="FAQ">SSS</a>
+        <a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Tema değiştir / Toggle theme" title="Tema">
+          <svg class="icon" id="themeIconSun"><use href="#i-sun"/></svg>
+        </button>
+        <button id="langToggle" class="icon-btn lang-btn" aria-label="Dil değiştir / Switch language">TR</button>
+        <a href="#iletisim" class="btn btn-primary header-cta" style="padding:10px 18px;font-size:.82rem" data-tr="Erken Erişime Katılın" data-en="Join Early Access">Erken Erişime Katılın</a>
+        <button id="navToggle" class="icon-btn" style="display:inline-flex" aria-label="Menü" aria-expanded="false">
+          <svg class="icon" id="menuIconOpen"><use href="#i-menu"/></svg>
+          <svg class="icon is-hidden" id="menuIconClose"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobileNav">
+      <a href="#ozgurluk" data-tr="İçeride & Dışarıda" data-en="Indoors & Outdoors">İçeride & Dışarıda</a>
       <a href="#urun" data-tr="Ürün" data-en="Product">Ürün</a>
+      <a href="#nasil-calisir" data-tr="Nasıl Çalışır" data-en="How It Works">Nasıl Çalışır</a>
       <a href="#kisisellestirme" data-tr="Kişiselleştirme" data-en="Personalization">Kişiselleştirme</a>
       <a href="#guvenlik" data-tr="Kalite &amp; Güvenlik" data-en="Quality &amp; Safety">Kalite &amp; Güvenlik</a>
+      <a href="#sss" data-tr="SSS" data-en="FAQ">SSS</a>
       <a href="#satin-al" data-tr="Nerede Satın Alınır" data-en="Where to Buy">Nerede Satın Alınır</a>
       <a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a>
     </nav>
-    <div class="header-actions">
-      <button id="langToggle" class="lang-toggle" aria-label="Dil değiştir / Switch language">
-        <span class="lang-opt lang-opt-tr">TR</span>/<span class="lang-opt lang-opt-en">EN</span>
-      </button>
-      <button id="navToggle" class="nav-toggle" aria-label="Menü" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
   </div>
 </header>
 
-<main id="top">
+<main id="top" class="pt-2">
 
-  <!-- HERO -->
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
   <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow" data-tr="Türkiye'de tasarlanır" data-en="Designed in Türkiye">Türkiye'de tasarlanır</p>
-        <h1>
-          <span data-tr="Alev, bu kez" data-en="A flame,">Alev, bu kez</span><br>
-          <em data-tr="sizin hikayenizi anlatıyor." data-en="that tells your story.">sizin hikayenizi anlatıyor.</em>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow" data-tr="Türkiye'de tasarlanır ve üretilir" data-en="Designed and made in Türkiye">Türkiye'de tasarlanır ve üretilir</p>
+        <h1 class="hero-title font-display mt-3">
+          <span data-tr="Ateş," data-en="Fire,">Ateş,</span><br>
+          <em data-tr="artık yer tanımıyor." data-en="no longer knows a place.">artık yer tanımıyor.</em>
         </h1>
-        <p class="hero-sub" data-tr="Bitenol, ısıya dayanıklı akrilik tüp ve fan kontrollü alev sistemine sahip, kişiselleştirilebilir bir masaüstü biyoetanol şömine. Duman yok, kül yok — sadece tasarım ve gerçek alev." data-en="Bitenol is a personalizable tabletop bioethanol fireplace with a heat-resistant acrylic tube and a fan-controlled flame system. No smoke, no ash — just design and real fire.">
-          Bitenol, ısıya dayanıklı akrilik tüp ve fan kontrollü alev sistemine sahip, kişiselleştirilebilir bir masaüstü biyoetanol şömine. Duman yok, kül yok — sadece tasarım ve gerçek alev.
+        <p class="hero-sub" data-tr="Bitenol, mekânın kurallarını yeniden yazar. İçeride bir sohbetin merkezi, dışarıda bir akşamın imzası. Aynı zarafet. Sınır yok." data-en="Bitenol rewrites the rules of a room. Indoors, the center of a conversation. Outdoors, the signature of an evening. The same elegance. No boundaries.">
+            Bitenol, mekânın kurallarını yeniden yazar. İçeride bir sohbetin merkezi, dışarıda bir akşamın imzası. Aynı zarafet. Sınır yok.
         </p>
-        <div class="hero-actions">
+        <div class="flex flex-wrap gap-3 mt-7">
           <a href="#satin-al" class="btn btn-primary" data-tr="Nerede Satın Alınır" data-en="Where to Buy">Nerede Satın Alınır</a>
-          <a href="#urun" class="btn btn-ghost" data-tr="Ürünü Keşfet" data-en="Explore the Product">Ürünü Keşfet</a>
+          <a href="#ozgurluk" class="btn btn-ghost" data-tr="Deneyimi Keşfedin" data-en="Discover the Experience">Deneyimi Keşfedin</a>
+        </div>
+        <div class="trust-row">
+          <span class="trust-item"><svg class="icon"><use href="#i-home"/></svg><span data-tr="İçeride ve dışarıda" data-en="Indoors and outdoors">İçeride ve dışarıda</span></span>
+          <span class="trust-item"><svg class="icon"><use href="#i-gift"/></svg><span data-tr="Size özel kazıma" data-en="Personalized engraving">Size özel kazıma</span></span>
+          <span class="trust-item"><svg class="icon"><use href="#i-shield"/></svg><span data-tr="Sertifikalı güvenlik" data-en="Certified safety">Sertifikalı güvenlik</span></span>
         </div>
       </div>
+
       <div class="hero-media">
-        <img src="assets/img/product-3.jpg" alt="Bitenol masaüstü biyoetanol şömine, iki katmanlı antrasit çelik taban üzerinde ısıya dayanıklı akrilik tüp" loading="eager">
-        <p class="media-caption" data-tr="Üretim atölyemizden — gerçek numune fotoğrafı" data-en="From our workshop — real sample photo">Üretim atölyemizden — gerçek numune fotoğrafı</p>
+        <div class="hero-frame">
+          <video src="assets/video/bitenol-flame.mp4" poster="assets/video/bitenol-flame-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+          <span class="hero-badge"><svg class="icon"><use href="#i-gift"/></svg><span data-tr="Size özel kazıma" data-en="Personalized engraving">Size özel kazıma</span></span>
+        </div>
+        <p class="media-caption" data-tr="Gerçek ürün görüntüsü — kurgu değil. Yalnızca ortam ışığı, sıcak bir loft atmosferine uygun şekilde renklendirilmiştir." data-en="Real product footage — not staged. Only the ambient lighting has been color-graded toward a warm loft atmosphere.">Gerçek ürün görüntüsü — kurgu değil. Yalnızca ortam ışığı, sıcak bir loft atmosferine uygun şekilde renklendirilmiştir.</p>
       </div>
     </div>
   </section>
 
-  <!-- ÜRÜN -->
-  <section id="urun" class="section reveal">
+  <!-- ============================================================
+       ÖZGÜRLÜK — indoor/outdoor, the product's core promise
+       ============================================================ -->
+  <section id="ozgurluk" class="section section-ink" style="border-top:none">
     <div class="wrap">
-      <p class="section-eyebrow" data-tr="Ürün" data-en="Product">Ürün</p>
-      <h2 data-tr="Sade bir siluet, düşünülmüş her detay" data-en="A simple silhouette, every detail considered">Sade bir siluet, düşünülmüş her detay</h2>
+      <div class="section-head" style="max-width:56ch">
+        <p class="eyebrow" style="color:var(--gold)" data-tr="Her Yerde Aynı Ayrıcalık" data-en="The Same Privilege, Everywhere">Her Yerde Aynı Ayrıcalık</p>
+        <h2 data-tr="Bir obje, sonsuz mekân" data-en="One object, endless spaces">Bir obje, sonsuz mekân</h2>
+        <p class="section-lead" data-tr="Bitenol bir odaya ya da mevsime bağlı kalmaz. Bugün salonunuzda, yarın terasınızda — her ortamda aynı zarafeti, aynı ayrıcalığı taşır." data-en="Bitenol isn't bound to a room, or a season. In your living room today, on your terrace tomorrow — it carries the same elegance, the same privilege, everywhere.">Bitenol bir odaya ya da mevsime bağlı kalmaz. Bugün salonunuzda, yarın terasınızda — her ortamda aynı zarafeti, aynı ayrıcalığı taşır.</p>
+      </div>
+      <div class="freedom-grid mt-6">
+        <div class="freedom-card">
+          <div class="feature-icon"><svg class="icon"><use href="#i-home"/></svg></div>
+          <h3 data-tr="İçeride" data-en="Indoors">İçeride</h3>
+          <p data-tr="Salonun merkezinde, yatak odasının köşesinde — her iç mekânda bir sohbetin ya da sessizliğin eşlikçisi olur." data-en="At the center of the living room, in the corner of the bedroom — it becomes the companion to every conversation, or every silence, indoors.">Salonun merkezinde, yatak odasının köşesinde — her iç mekânda bir sohbetin ya da sessizliğin eşlikçisi olur.</p>
+        </div>
+        <div class="freedom-card">
+          <div class="feature-icon"><svg class="icon"><use href="#i-sun"/></svg></div>
+          <h3 data-tr="Dışarıda" data-en="Outdoors">Dışarıda</h3>
+          <p data-tr="Terasta bir gün batımı, bahçede bir sonbahar akşamı — Bitenol dışarıyı da aynı ayrıcalıkla kucaklar." data-en="A sunset on the terrace, an autumn evening in the garden — Bitenol embraces the outdoors with the very same privilege.">Terasta bir gün batımı, bahçede bir sonbahar akşamı — Bitenol dışarıyı da aynı ayrıcalıkla kucaklar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ÜRÜN / FEATURES
+       ============================================================ -->
+  <section id="urun" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-tr="Tasarım Felsefesi" data-en="Design Philosophy">Tasarım Felsefesi</p>
+        <h2 data-tr="Her detay, bir ambiyans yaratmak için var" data-en="Every detail exists to create an ambiance">Her detay, bir ambiyans yaratmak için var</h2>
+      </div>
 
       <div class="feature-grid">
         <div class="feature-media">
@@ -82,138 +477,211 @@
         </div>
         <div class="feature-list">
           <div class="feature-item">
-            <h3 data-tr="Isıya dayanıklı akrilik tüp" data-en="Heat-resistant acrylic tube">Isıya dayanıklı akrilik tüp</h3>
-            <p data-tr="Yanmaz sınıfı, test sertifikalı akrilik tüp — alevi her yönden görünür kılar, kullanıcı tarafından elle takılıp çıkarılabilir." data-en="Fire-resistant, test-certified acrylic tube — makes the flame visible from every angle, and can be removed and reattached by hand.">Yanmaz sınıfı, test sertifikalı akrilik tüp — alevi her yönden görünür kılar, kullanıcı tarafından elle takılıp çıkarılabilir.</p>
+            <div class="feature-icon"><svg class="icon"><use href="#i-shield"/></svg></div>
+            <div>
+              <h3 data-tr="Alevi her açıdan izleyin" data-en="Watch the flame from every angle">Alevi her açıdan izleyin</h3>
+              <p data-tr="Yanmaz sınıfı, test sertifikalı akrilik tüp; alevin dansını hiçbir yönden gizlemeden evinizin bir parçası hâline getirir." data-en="A fire-rated, test-certified acrylic tube that hides nothing — letting the flame's movement become part of your room from every side.">Yanmaz sınıfı, test sertifikalı akrilik tüp; alevin dansını hiçbir yönden gizlemeden evinizin bir parçası hâline getirir.</p>
+            </div>
           </div>
           <div class="feature-item">
-            <h3 data-tr="Fitilli yakıt sistemi" data-en="Wick-based fuel system">Fitilli yakıt sistemi</h3>
-            <p data-tr="Biyoetanol, açık bir kaba değil; fitil ve gözenekli malzemeye dökülür. Yakıt malzemede kaldığı sürece alev düzenli şekilde yanmaya devam eder." data-en="Bioethanol is poured onto a wick and porous absorbent media, not into an open bowl. The flame keeps burning steadily as long as fuel remains in the media.">Biyoetanol, açık bir kaba değil; fitil ve gözenekli malzemeye dökülür. Yakıt malzemede kaldığı sürece alev düzenli şekilde yanmaya devam eder.</p>
+            <div class="feature-icon"><svg class="icon"><use href="#i-flask"/></svg></div>
+            <div>
+              <h3 data-tr="Alev, düzenli ve sakin yanar" data-en="A flame that burns steady and calm">Alev, düzenli ve sakin yanar</h3>
+              <p data-tr="Biyoetanol, fitil ve gözenekli bir yapı üzerinde tutulur; yakıt kaldığı sürece alev dengeli ve öngörülebilir şekilde yanmaya devam eder." data-en="Bioethanol is held within a wick and porous structure, so the flame stays balanced and predictable for as long as fuel remains.">Biyoetanol, fitil ve gözenekli bir yapı üzerinde tutulur; yakıt kaldığı sürece alev dengeli ve öngörülebilir şekilde yanmaya devam eder.</p>
+            </div>
           </div>
           <div class="feature-item">
-            <h3 data-tr="Tek düğmeyle alev kontrolü" data-en="One-button flame control">Tek düğmeyle alev kontrolü</h3>
-            <p data-tr="Tabandaki açma/kapama düğmesi entegre bir fanı kontrol eder; aynı düğme alevi yukarı doğru canlandırır veya söndürür." data-en="The on/off button on the base controls an integrated fan; the same button lifts the flame or extinguishes it.">Tabandaki açma/kapama düğmesi entegre bir fanı kontrol eder; aynı düğme alevi yukarı doğru canlandırır veya söndürür.</p>
+            <div class="feature-icon"><svg class="icon"><use href="#i-power"/></svg></div>
+            <div>
+              <h3 data-tr="Ambiyansı tek dokunuşla ayarlayın" data-en="Set the mood with a single touch">Ambiyansı tek dokunuşla ayarlayın</h3>
+              <p data-tr="Taban üzerindeki tek düğme, alevi istediğiniz anda canlandırır ya da güvenle söndürür — akşam ritüeliniz kadar kolay." data-en="One button on the base lifts the flame whenever you like, or safely extinguishes it — as effortless as your evening ritual.">Taban üzerindeki tek düğme, alevi istediğiniz anda canlandırır ya da güvenle söndürür — akşam ritüeliniz kadar kolay.</p>
+            </div>
           </div>
           <div class="feature-item">
-            <h3 data-tr="Pil veya USB-C şarj" data-en="Battery or USB-C charging">Pil veya USB-C şarj</h3>
-            <p data-tr="Kalem pil veya dahili şarjlı batarya ile çalışır; Type-C girişten şarj edilebilir." data-en="Runs on AA batteries or a built-in rechargeable battery; charges via a USB-C port.">Kalem pil veya dahili şarjlı batarya ile çalışır; Type-C girişten şarj edilebilir.</p>
+            <div class="feature-icon"><svg class="icon"><use href="#i-battery"/></svg></div>
+            <div>
+              <h3 data-tr="Sofranızda yalnızca alev göze çarpar" data-en="A tablescape with nothing to hide">Sofranızda yalnızca alev göze çarpar</h3>
+              <p data-tr="Kalem pil veya dahili şarjlı batarya ile çalışır, USB-C'den şarj edilir — masanızda dikkat çeken tek şey alev olsun, kablo değil." data-en="Runs on AA batteries or a built-in rechargeable battery, charged via USB-C — so it's the flame your table shows off, not a cord.">Kalem pil veya dahili şarjlı batarya ile çalışır, USB-C'den şarj edilir — masanızda dikkat çeken tek şey alev olsun, kablo değil.</p>
+            </div>
           </div>
           <div class="feature-item">
-            <h3 data-tr="İki katmanlı çelik taban" data-en="Two-tier steel base">İki katmanlı çelik taban</h3>
-            <p data-tr="Mat antrasit kaplamalı, pahlı geçiş plakalı çelik taban — düşük ağırlık merkezi ve sade bir duruş." data-en="Matte anthracite-coated steel base with a bevelled transition plate — a low center of gravity and a quiet, minimal stance.">Mat antrasit kaplamalı, pahlı geçiş plakalı çelik taban — düşük ağırlık merkezi ve sade bir duruş.</p>
+            <div class="feature-icon"><svg class="icon"><use href="#i-box"/></svg></div>
+            <div>
+              <h3 data-tr="Zarif bir duruş, sağlam bir temel" data-en="A graceful stance, a solid foundation">Zarif bir duruş, sağlam bir temel</h3>
+              <p data-tr="Mat antrasit kaplamalı iki katmanlı çelik taban, düşük ağırlık merkeziyle hem göz alıcı hem güvenli bir duruş sunar." data-en="A matte anthracite two-tier steel base with a low center of gravity — a stance that is as elegant as it is stable.">Mat antrasit kaplamalı iki katmanlı çelik taban, düşük ağırlık merkeziyle hem göz alıcı hem güvenli bir duruş sunar.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NASIL ÇALIŞIR -->
-  <section id="nasil-calisir" class="section reveal">
+  <!-- ============================================================
+       NASIL ÇALIŞIR
+       ============================================================ -->
+  <section id="nasil-calisir" class="section" style="background:var(--surface-2)">
     <div class="wrap">
-      <p class="section-eyebrow" data-tr="Nasıl Çalışır" data-en="How It Works">Nasıl Çalışır</p>
-      <h2 data-tr="Üç adımda gerçek alev" data-en="Real fire in three steps">Üç adımda gerçek alev</h2>
+      <div class="section-head">
+        <p class="eyebrow" data-tr="Akşam Ritüeliniz" data-en="Your Evening Ritual">Akşam Ritüeliniz</p>
+        <h2 data-tr="Üç adımda, evinizde sıcak bir an" data-en="A warm moment at home, in three steps">Üç adımda, evinizde sıcak bir an</h2>
+      </div>
       <div class="steps-grid">
         <div class="step-item">
           <span class="step-num">01</span>
           <h3 data-tr="Yakıtı ekleyin" data-en="Add fuel">Yakıtı ekleyin</h3>
-          <p data-tr="Biyoetanolü iç hazne içindeki fitil ve gözenekli malzemenin üzerine dökün." data-en="Pour bioethanol onto the wick and porous media inside the inner chamber.">Biyoetanolü iç hazne içindeki fitil ve gözenekli malzemenin üzerine dökün.</p>
+          <p data-tr="Biyoetanolü iç haznedeki fitilin üzerine nazikçe dökün." data-en="Gently pour bioethanol onto the wick inside the inner chamber.">Biyoetanolü iç haznedeki fitilin üzerine nazikçe dökün.</p>
         </div>
         <div class="step-item">
           <span class="step-num">02</span>
-          <h3 data-tr="Ateşleyin ve düğmeye basın" data-en="Light it and press the button">Ateşleyin ve düğmeye basın</h3>
-          <p data-tr="Taban üzerindeki tek düğme, entegre fanı devreye alarak alevi yukarı doğru canlandırır." data-en="The single button on the base activates the integrated fan, lifting the flame upward.">Taban üzerindeki tek düğme, entegre fanı devreye alarak alevi yukarı doğru canlandırır.</p>
+          <h3 data-tr="Alevi canlandırın" data-en="Bring the flame to life">Alevi canlandırın</h3>
+          <p data-tr="Taban üzerindeki tek düğmeyle alevi yükseltin; saniyeler içinde oda, sıcak bir ışıkla dolar." data-en="One button on the base lifts the flame — within seconds, the room fills with warm light.">Taban üzerindeki tek düğmeyle alevi yükseltin; saniyeler içinde oda, sıcak bir ışıkla dolar.</p>
         </div>
         <div class="step-item">
           <span class="step-num">03</span>
-          <h3 data-tr="Tadını çıkarın, söndürün" data-en="Enjoy, then extinguish">Tadını çıkarın, söndürün</h3>
-          <p data-tr="İşiniz bittiğinde aynı düğmeye basarak alevi güvenle söndürün." data-en="When you're done, press the same button to safely extinguish the flame.">İşiniz bittiğinde aynı düğmeye basarak alevi güvenle söndürün.</p>
+          <h3 data-tr="Anın tadını çıkarın" data-en="Savor the moment">Anın tadını çıkarın</h3>
+          <p data-tr="Hazır olduğunuzda aynı düğmeye basarak alevi güvenle söndürün — huzur, siz isteyene kadar sürsün." data-en="When you're ready, press the same button to safely extinguish the flame — let the calm last exactly as long as you like.">Hazır olduğunuzda aynı düğmeye basarak alevi güvenle söndürün — huzur, siz isteyene kadar sürsün.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KİŞİSELLEŞTİRME -->
-  <section id="kisisellestirme" class="section section-dark reveal">
+  <!-- ============================================================
+       KİŞİSELLEŞTİRME — interactive tabs
+       ============================================================ -->
+  <section id="kisisellestirme" class="section section-ink">
     <div class="wrap">
-      <p class="section-eyebrow" data-tr="Kişiselleştirme" data-en="Personalization">Kişiselleştirme</p>
-      <h2 data-tr="Her Bitenol, bir hikaye taşıyabilir" data-en="Every Bitenol can carry a story">Her Bitenol, bir hikaye taşıyabilir</h2>
-      <p class="section-lead" data-tr="Taban üzerindeki çıkarılabilir plakaya isim, tarih veya kısa bir mesaj kazıtabileceğiniz bir kişiselleştirme sistemi hazırlıyoruz." data-en="We are building a personalization system that lets you engrave a name, date, or short message onto a removable plate on the base.">Taban üzerindeki çıkarılabilir plakaya isim, tarih veya kısa bir mesaj kazıtabileceğiniz bir kişiselleştirme sistemi hazırlıyoruz.</p>
+      <div class="section-head">
+        <p class="eyebrow" style="color:var(--gold)" data-tr="Kişiselleştirme" data-en="Personalization">Kişiselleştirme</p>
+        <h2 data-tr="Her Bitenol, bir hikaye taşıyabilir" data-en="Every Bitenol can carry a story">Her Bitenol, bir hikaye taşıyabilir</h2>
+        <p class="section-lead" data-tr="Taban üzerindeki çıkarılabilir plakaya isim, tarih veya kısa bir mesaj kazıtabileceğiniz bir sistem hazırlıyoruz. Aşağıdaki örneklerden birini seçip önizleyin." data-en="We are building a system that lets you engrave a name, date, or short message onto a removable plate on the base. Pick an example below to preview it.">Taban üzerindeki çıkarılabilir plakaya isim, tarih veya kısa bir mesaj kazıtabileceğiniz bir sistem hazırlıyoruz. Aşağıdaki örneklerden birini seçip önizleyin.</p>
+      </div>
 
-      <div class="tag-grid">
-        <div class="tag-card">
-          <p class="tag-label" data-tr="Personal" data-en="Personal">Personal</p>
-          <p class="tag-example">Emma &amp; Daniel</p>
+      <div class="tabs-shell">
+        <div class="tab-list" role="tablist" aria-label="Kişiselleştirme örnekleri" id="tabList">
+          <!-- buttons injected by JS from PERSONA_DATA, see script -->
         </div>
-        <div class="tag-card">
-          <p class="tag-label" data-tr="Signature" data-en="Signature">Signature</p>
-          <p class="tag-example">Emma &amp; Daniel<br>19.09.2026</p>
-        </div>
-        <div class="tag-card">
-          <p class="tag-label" data-tr="Home" data-en="Home">Home</p>
-          <p class="tag-example" data-tr="Aile Evi<br>2026'dan beri" data-en="The Smith Home<br>Est. 2026">Aile Evi<br>2026'dan beri</p>
+        <div class="plate-mock" id="plateMock">
+          <p class="plate-label" id="plateLabel">PERSONAL</p>
+          <p class="plate-text" id="plateText">Emma &amp; Daniel</p>
         </div>
       </div>
-      <p class="note" data-tr="Kişiselleştirme sistemi yakında hazır olacak. Haberdar olmak isterseniz aşağıdan bize ulaşabilirsiniz." data-en="The personalization system is coming soon. Reach out below if you'd like to be notified.">Kişiselleştirme sistemi yakında hazır olacak. Haberdar olmak isterseniz aşağıdan bize ulaşabilirsiniz.</p>
+      <p class="form-note mt-6" data-tr="Kişiselleştirme sistemi yakında hazır olacak. Haberdar olmak isterseniz aşağıdan bize ulaşabilirsiniz." data-en="The personalization system is coming soon. Reach out below if you'd like to be notified.">Kişiselleştirme sistemi yakında hazır olacak. Haberdar olmak isterseniz aşağıdan bize ulaşabilirsiniz.</p>
     </div>
   </section>
 
-  <!-- GÜVENLİK -->
-  <section id="guvenlik" class="section reveal">
+  <!-- ============================================================
+       GÜVENLİK
+       ============================================================ -->
+  <section id="guvenlik" class="section">
     <div class="wrap">
-      <p class="section-eyebrow" data-tr="Kalite &amp; Güvenlik" data-en="Quality &amp; Safety">Kalite &amp; Güvenlik</p>
-      <h2 data-tr="Gerçek alevle çalışan bir ürün, ciddiye alınmayı hak eder" data-en="A product that runs on real fire deserves to be taken seriously">Gerçek alevle çalışan bir ürün, ciddiye alınmayı hak eder</h2>
+      <div class="section-head">
+        <p class="eyebrow" data-tr="Kalite &amp; Güvenlik" data-en="Quality &amp; Safety">Kalite &amp; Güvenlik</p>
+        <h2 data-tr="Gerçek alevle çalışan bir ürün, ciddiye alınmayı hak eder" data-en="A product that runs on real fire deserves to be taken seriously">Gerçek alevle çalışan bir ürün, ciddiye alınmayı hak eder</h2>
+      </div>
       <div class="safety-grid">
         <div class="safety-item">
-          <h3 data-tr="Açık dökme tasarım değil" data-en="Not an open-pour design">Açık dökme tasarım değil</h3>
+          <div class="feature-icon"><svg class="icon"><use href="#i-flask"/></svg></div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.08rem" data-tr="Açık dökme tasarım değil" data-en="Not an open-pour design">Açık dökme tasarım değil</h3>
           <p data-tr="Yakıt haznemiz fitil ve gözenekli malzeme kullanır; biyoetanol açık bir kaba biriktirilmez." data-en="Our fuel chamber uses a wick and porous media; bioethanol is not pooled in an open bowl.">Yakıt haznemiz fitil ve gözenekli malzeme kullanır; biyoetanol açık bir kaba biriktirilmez.</p>
         </div>
         <div class="safety-item">
-          <h3 data-tr="Sertifikalı akrilik" data-en="Certified acrylic">Sertifikalı akrilik</h3>
+          <div class="feature-icon"><svg class="icon"><use href="#i-shield"/></svg></div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.08rem" data-tr="Sertifikalı akrilik" data-en="Certified acrylic">Sertifikalı akrilik</h3>
           <p data-tr="Dış tüpümüz ısıya dayanıklı, yanmaz sınıfı akrilik olup test belgeleri mevcuttur." data-en="Our outer tube is heat-resistant, fire-rated acrylic with test documentation.">Dış tüpümüz ısıya dayanıklı, yanmaz sınıfı akrilik olup test belgeleri mevcuttur.</p>
         </div>
         <div class="safety-item">
-          <h3 data-tr="Test süreci devam ediyor" data-en="Testing in progress">Test süreci devam ediyor</h3>
-          <p data-tr="İlgili güvenlik standartlarına uygunluk için bağımsız laboratuvar testleri ve mühendislik incelemesi sürüyor. Sertifikasyon tamamlandığında bu sayfa güncellenecektir." data-en="Independent lab testing and engineering review against relevant safety standards are ongoing. This page will be updated once certification is complete.">İlgili güvenlik standartlarına uygunluk için bağımsız laboratuvar testleri ve mühendislik incelemesi sürüyor. Sertifikasyon tamamlandığında bu sayfa güncellenecektir.</p>
+          <div class="feature-icon"><svg class="icon"><use href="#i-check"/></svg></div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.08rem" data-tr="Test süreci devam ediyor" data-en="Testing in progress">Test süreci devam ediyor</h3>
+          <p data-tr="İlgili güvenlik standartlarına uygunluk için bağımsız laboratuvar testleri ve mühendislik incelemesi sürüyor." data-en="Independent lab testing and engineering review against relevant safety standards are ongoing.">İlgili güvenlik standartlarına uygunluk için bağımsız laboratuvar testleri ve mühendislik incelemesi sürüyor.</p>
         </div>
       </div>
       <p class="disclaimer" data-tr="Bitenol sıvı yakıtla çalışan bir üründür. Kullanım kılavuzunu daima okuyun, yakıtı yalnızca soğuk ve sönük haldeyken ekleyin, çocuklardan ve yanıcı maddelerden uzak tutun." data-en="Bitenol operates on liquid fuel. Always read the user manual, add fuel only when cold and unlit, and keep away from children and flammable materials.">Bitenol sıvı yakıtla çalışan bir üründür. Kullanım kılavuzunu daima okuyun, yakıtı yalnızca soğuk ve sönük haldeyken ekleyin, çocuklardan ve yanıcı maddelerden uzak tutun.</p>
     </div>
   </section>
 
-  <!-- NEREDE SATIN ALINIR -->
-  <section id="satin-al" class="section section-dark reveal">
-    <div class="wrap">
-      <p class="section-eyebrow" data-tr="Nerede Satın Alınır" data-en="Where to Buy">Nerede Satın Alınır</p>
-      <h2 data-tr="Bitenol yakında bu adreslerde" data-en="Bitenol will be available here soon">Bitenol yakında bu adreslerde</h2>
+  <!-- ============================================================
+       SSS — accordion
+       ============================================================ -->
+  <section id="sss" class="section" style="background:var(--surface-2)">
+    <div class="wrap" style="max-width:840px">
+      <div class="section-head" style="max-width:none">
+        <p class="eyebrow" data-tr="Sıkça Sorulan Sorular" data-en="Frequently Asked Questions">Sıkça Sorulan Sorular</p>
+        <h2 data-tr="Merak ettikleriniz" data-en="What you're wondering">Merak ettikleriniz</h2>
+      </div>
+      <div id="faqList"><!-- injected by JS from FAQ_DATA --></div>
+    </div>
+  </section>
 
+  <!-- ============================================================
+       NEREDE SATIN ALINIR
+       ============================================================ -->
+  <section id="satin-al" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-tr="Nerede Satın Alınır" data-en="Where to Buy">Nerede Satın Alınır</p>
+        <h2 data-tr="Bitenol yakında bu adreslerde" data-en="Bitenol will be available here soon">Bitenol yakında bu adreslerde</h2>
+      </div>
       <div class="market-grid">
         <div class="market-card">
-          <span class="market-icon" aria-hidden="true">🛍️</span>
+          <svg class="icon"><use href="#i-box"/></svg>
           <p class="market-name">Trendyol</p>
           <p class="market-status" data-tr="Çok yakında" data-en="Coming very soon">Çok yakında</p>
         </div>
         <div class="market-card">
-          <span class="market-icon" aria-hidden="true">🧡</span>
+          <svg class="icon"><use href="#i-heart"/></svg>
           <p class="market-name">Etsy</p>
           <p class="market-status" data-tr="Yakında" data-en="Coming soon">Yakında</p>
         </div>
         <div class="market-card">
-          <span class="market-icon" aria-hidden="true">📦</span>
+          <svg class="icon"><use href="#i-box"/></svg>
           <p class="market-name">Amazon</p>
           <p class="market-status" data-tr="Yakında" data-en="Coming soon">Yakında</p>
         </div>
       </div>
-      <p class="note" data-tr="Bir pazar yeri canlıya alındığında bu kartlar doğrudan satış sayfasına bağlanacak şekilde güncellenecektir." data-en="Once a marketplace listing goes live, these cards will be updated to link directly to it.">Bir pazar yeri canlıya alındığında bu kartlar doğrudan satış sayfasına bağlanacak şekilde güncellenecektir.</p>
+      <p class="form-note mt-6" data-tr="Bir pazar yeri canlıya alındığında bu kartlar doğrudan satış sayfasına bağlanacak şekilde güncellenecektir." data-en="Once a marketplace listing goes live, these cards will be updated to link directly to it.">Bir pazar yeri canlıya alındığında bu kartlar doğrudan satış sayfasına bağlanacak şekilde güncellenecektir.</p>
     </div>
   </section>
 
-  <!-- İLETİŞİM -->
-  <section id="iletisim" class="section reveal">
-    <div class="wrap contact-wrap">
-      <p class="section-eyebrow" data-tr="İletişim" data-en="Contact">İletişim</p>
-      <h2 data-tr="Sorularınız mı var?" data-en="Questions?">Sorularınız mı var?</h2>
-      <p class="section-lead" data-tr="Toptan alım, iş birliği veya lansman bildirimi için bize yazın." data-en="Reach out for wholesale, collaborations, or launch notifications.">Toptan alım, iş birliği veya lansman bildirimi için bize yazın.</p>
-      <a class="btn btn-primary" href="mailto:info@bitenol.com">info@bitenol.com</a>
-      <p class="todo-note">TODO: gerçek e-posta adresi ve varsa sosyal medya hesaplarıyla değiştirilmeli.</p>
+  <!-- ============================================================
+       İLETİŞİM
+       ============================================================ -->
+  <section id="iletisim" class="section section-ink">
+    <div class="wrap">
+      <div class="section-head" style="max-width:none">
+        <p class="eyebrow" style="color:var(--gold)" data-tr="İletişim" data-en="Contact">İletişim</p>
+        <h2 data-tr="Sorularınız mı var?" data-en="Questions?">Sorularınız mı var?</h2>
+        <p class="section-lead" data-tr="Toptan alım, iş birliği veya lansman bildirimi için bize ulaşın." data-en="Reach out for wholesale, collaborations, or launch notifications.">Toptan alım, iş birliği veya lansman bildirimi için bize ulaşın.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <p class="eyebrow" style="color:rgba(241,241,238,.5)" data-tr="Doğrudan yazın" data-en="Write directly">Doğrudan yazın</p>
+          <div class="copy-row mt-3">
+            <svg class="icon" style="color:var(--gold)"><use href="#i-mail"/></svg>
+            <span id="emailText">info@bitenol.com</span>
+            <button class="copy-btn" id="copyEmailBtn" aria-label="E-postayı kopyala" title="Kopyala">
+              <svg class="icon"><use href="#i-copy"/></svg>
+            </button>
+          </div>
+          <p class="form-note" data-tr="TODO: gerçek e-posta adresiyle değiştirilmeli." data-en="TODO: replace with the real contact email.">TODO: gerçek e-posta adresiyle değiştirilmeli.</p>
+        </div>
+
+        <div>
+          <p class="eyebrow" style="color:rgba(241,241,238,.5)" data-tr="Lansmandan haberdar olun" data-en="Get notified at launch">Lansmandan haberdar olun</p>
+          <form id="notifyForm" class="mt-3" novalidate>
+            <div class="field">
+              <label for="notifyEmail" data-tr="E-posta adresiniz" data-en="Your email">E-posta adresiniz</label>
+              <input type="email" id="notifyEmail" name="email" placeholder="ornek@eposta.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%" data-tr="Erken Erişim Listesine Katıl" data-en="Join the Early Access List">Erken Erişim Listesine Katıl</button>
+          </form>
+          <div class="form-success mt-3" id="formSuccess">
+            <svg class="icon"><use href="#i-check"/></svg>
+            <span data-tr="Kaydedildi — bu cihazda saklandı." data-en="Saved — stored on this device.">Kaydedildi — bu cihazda saklandı.</span>
+          </div>
+          <p class="form-note" data-tr="Bu erken sürümde kayıtlar yalnızca tarayıcınızda tutulur, bir sunucuya gönderilmez." data-en="In this early version, entries are only kept in your browser — nothing is sent to a server.">Bu erken sürümde kayıtlar yalnızca tarayıcınızda tutulur, bir sunucuya gönderilmez.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -221,11 +689,278 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <span class="logo small">BITENOL</span>
+    <a href="#top" class="logo" style="font-size:.95rem"><svg class="icon" style="color:var(--ember)"><use href="#i-flame"/></svg>BITENOL</a>
     <p data-tr="© 2026 Bitenol. Tüm hakları saklıdır." data-en="© 2026 Bitenol. All rights reserved.">© 2026 Bitenol. Tüm hakları saklıdır.</p>
+    <div class="footer-links">
+      <a href="#guvenlik" data-tr="Kalite &amp; Güvenlik" data-en="Quality &amp; Safety">Kalite &amp; Güvenlik</a>
+      <a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a>
+    </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ==========================================================
+     DATA
+     ========================================================== */
+  var PERSONA_DATA = [
+    { key: 'personal', icon: 'i-heart', tr: 'Personal', en: 'Personal', text: 'Emma &amp; Daniel', sub_tr: 'İsimler', sub_en: 'Names' },
+    { key: 'signature', icon: 'i-flame', tr: 'Signature', en: 'Signature', text: 'Emma &amp; Daniel<br>19.09.2026', sub_tr: 'İsim + tarih', sub_en: 'Name + date' },
+    { key: 'home', icon: 'i-home', tr: 'Home', en: 'Home', text_tr: 'Aile Evi<br>2026\'dan beri', text_en: 'The Smith Home<br>Est. 2026', sub_tr: 'Ev ısıtması', sub_en: 'Housewarming' },
+    { key: 'memory', icon: 'i-heart', tr: 'Memory', en: 'Memory', text_tr: 'Kalbimizde sonsuza dek<br>Michael · 1988–2026', text_en: 'Forever in our hearts<br>Michael · 1988–2026', sub_tr: 'Anma', sub_en: 'Memorial' },
+    { key: 'coordinates', icon: 'i-compass', tr: 'Coordinates', en: 'Coordinates', text: 'Hikayemizin başladığı yer<br>41.0082°K · 28.9784°D', sub_tr: 'Koordinatlar', sub_en: 'Coordinates' }
+  ];
+
+  var FAQ_DATA = [
+    {
+      q_tr: 'Yakıt olarak ne kullanılır?', q_en: 'What fuel does it use?',
+      a_tr: 'Biyoetanol. Açık bir kaba değil, iç hazne içindeki fitil ve gözenekli malzemeye dökülür.',
+      a_en: 'Bioethanol. It is poured onto a wick and porous media inside the inner chamber, not into an open bowl.'
+    },
+    {
+      q_tr: 'Ne kadar süre yanar, yakıt kapasitesi nedir?', q_en: 'How long does it burn, what is the fuel capacity?',
+      a_tr: 'Kesin yanma süresi ve yakıt kapasitesi, test süreci tamamlandığında ürün sayfasında paylaşılacaktır.',
+      a_en: 'Exact burn time and fuel capacity will be published on the product page once testing is complete.'
+    },
+    {
+      q_tr: 'İç mekânda kullanabilir miyim?', q_en: 'Can I use it indoors?',
+      a_tr: 'Havalandırılan bir alanda, kullanım kılavuzundaki mesafe ve güvenlik uyarılarına uyularak kullanılmalıdır.',
+      a_en: 'It should be used in a ventilated area, following the clearance and safety guidance in the user manual.'
+    },
+    {
+      q_tr: 'Kişiselleştirme nasıl çalışacak?', q_en: 'How will personalization work?',
+      a_tr: 'Taban üzerindeki çıkarılabilir metal plakaya isim, tarih veya kısa bir mesaj kazınacak. Sistem yakında hazır olacak.',
+      a_en: 'A name, date, or short message will be engraved onto a removable metal plate on the base. The system is coming soon.'
+    },
+    {
+      q_tr: 'Pil mi, şarjlı batarya mı?', q_en: 'Batteries or rechargeable?',
+      a_tr: 'Kalem pil veya dahili şarjlı batarya ile çalışacak şekilde tasarlanıyor; kesin karar üretim öncesinde netleşecek.',
+      a_en: 'Designed to run on AA batteries or a built-in rechargeable battery; the final decision will be confirmed before production.'
+    },
+    {
+      q_tr: 'Yurt dışına gönderim yapılacak mı?', q_en: 'Will you ship internationally?',
+      a_tr: 'Evet — Etsy ve Amazon listelemeleri canlıya alındığında bu sayfadan ve ilgili pazar yerinden duyurulacaktır.',
+      a_en: 'Yes — once the Etsy and Amazon listings go live, this will be announced here and on those marketplaces.'
+    }
+  ];
+
+  /* ==========================================================
+     THEME — data-theme drives the CSS tokens (see <style>).
+     Persists per-viewer via localStorage; falls back to the
+     host/system preference when nothing is saved yet.
+     ========================================================== */
+  function getSavedTheme() {
+    try { return localStorage.getItem('bitenol-theme'); } catch (e) { return null; }
+  }
+  function saveTheme(t) {
+    try { localStorage.setItem('bitenol-theme', t); } catch (e) {}
+  }
+  function isDark() {
+    var explicit = document.documentElement.getAttribute('data-theme');
+    if (explicit) return explicit === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function applyThemeIcon() {
+    var sun = document.getElementById('themeIconSun');
+    sun.innerHTML = isDark()
+      ? '<use href="#i-moon"></use>'
+      : '<use href="#i-sun"></use>';
+  }
+  (function initTheme() {
+    var saved = getSavedTheme();
+    if (saved === 'dark' || saved === 'light') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  })();
+
+  /* ==========================================================
+     LANGUAGE — swap [data-tr]/[data-en] pairs; TR is the
+     default markup, so failure-to-run leaves correct Turkish text.
+     ========================================================== */
+  var STORAGE_LANG = 'bitenol-lang';
+  function applyLang(lang) {
+    document.querySelectorAll('[data-tr][data-en]').forEach(function (el) {
+      el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-tr');
+    });
+    document.body.setAttribute('data-lang', lang);
+    document.getElementById('langToggle').textContent = lang === 'en' ? 'EN' : 'TR';
+    try { localStorage.setItem(STORAGE_LANG, lang); } catch (e) {}
+    renderTabs(lang);
+    renderFaq(lang);
+  }
+  function currentLang() {
+    try {
+      var saved = localStorage.getItem(STORAGE_LANG);
+      if (saved === 'tr' || saved === 'en') return saved;
+    } catch (e) {}
+    return 'tr';
+  }
+
+  /* ==========================================================
+     PERSONALIZATION TABS
+     ========================================================== */
+  var activeTabKey = PERSONA_DATA[0].key;
+  function renderTabs(lang) {
+    var list = document.getElementById('tabList');
+    list.innerHTML = '';
+    PERSONA_DATA.forEach(function (item) {
+      var btn = document.createElement('button');
+      btn.className = 'tab-btn';
+      btn.type = 'button';
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', item.key === activeTabKey ? 'true' : 'false');
+      btn.dataset.key = item.key;
+      var label = lang === 'en' ? item.en : item.tr;
+      var sub = lang === 'en' ? item.sub_en : item.sub_tr;
+      btn.innerHTML = label + '<span class="tab-sub">' + sub + '</span>';
+      btn.addEventListener('click', function () {
+        activeTabKey = item.key;
+        renderTabs(lang);
+        renderPlate(lang);
+      });
+      list.appendChild(btn);
+    });
+    renderPlate(lang);
+  }
+  function renderPlate(lang) {
+    var item = PERSONA_DATA.find(function (p) { return p.key === activeTabKey; });
+    var label = lang === 'en' ? item.en : item.tr;
+    var text = item.text || (lang === 'en' ? item.text_en : item.text_tr);
+    document.getElementById('plateLabel').textContent = label.toUpperCase();
+    document.getElementById('plateText').innerHTML = text;
+  }
+
+  /* ==========================================================
+     FAQ ACCORDION
+     ========================================================== */
+  function renderFaq(lang) {
+    var list = document.getElementById('faqList');
+    var openIndex = list.dataset.openIndex !== undefined ? Number(list.dataset.openIndex) : 0;
+    list.innerHTML = '';
+    FAQ_DATA.forEach(function (item, i) {
+      var wrap = document.createElement('div');
+      wrap.className = 'faq-item';
+      wrap.dataset.open = (i === openIndex) ? 'true' : 'false';
+      var q = lang === 'en' ? item.q_en : item.q_tr;
+      var a = lang === 'en' ? item.a_en : item.a_tr;
+      wrap.innerHTML =
+        '<button class="faq-q" type="button" aria-expanded="' + (i === openIndex) + '">' +
+          '<span>' + q + '</span>' +
+          '<svg class="icon"><use href="#i-chevron"></use></svg>' +
+        '</button>' +
+        '<div class="faq-a"><div class="faq-a-inner">' + a + '</div></div>';
+      wrap.querySelector('.faq-q').addEventListener('click', function () {
+        var willOpen = wrap.dataset.open !== 'true';
+        list.dataset.openIndex = willOpen ? String(i) : '-1';
+        renderFaq(lang);
+      });
+      list.appendChild(wrap);
+    });
+  }
+
+  /* ==========================================================
+     COPY EMAIL — mailto: links are unreliable for many viewers,
+     so the primary action is copy-to-clipboard with a fallback.
+     ========================================================== */
+  function initCopyEmail() {
+    var btn = document.getElementById('copyEmailBtn');
+    var text = document.getElementById('emailText').textContent;
+    btn.addEventListener('click', function () {
+      function showCopied() {
+        btn.innerHTML = '<svg class="icon"><use href="#i-check"></use></svg>';
+        setTimeout(function () { btn.innerHTML = '<svg class="icon"><use href="#i-copy"></use></svg>'; }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied).catch(function () {
+          selectFallback();
+        });
+      } else {
+        selectFallback();
+      }
+      function selectFallback() {
+        var range = document.createRange();
+        range.selectNodeContents(document.getElementById('emailText'));
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        showCopied();
+      }
+    });
+  }
+
+  /* ==========================================================
+     NOTIFY FORM — client-side only (no backend). Validates,
+     stores locally, shows an honestly-worded success state.
+     ========================================================== */
+  function initNotifyForm() {
+    var form = document.getElementById('notifyForm');
+    var success = document.getElementById('formSuccess');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = document.getElementById('notifyEmail');
+      var value = input.value.trim();
+      var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      if (!valid) {
+        input.style.borderColor = 'var(--ember)';
+        input.focus();
+        return;
+      }
+      try {
+        var list = JSON.parse(localStorage.getItem('bitenol-notify-list') || '[]');
+        if (list.indexOf(value) === -1) list.push(value);
+        localStorage.setItem('bitenol-notify-list', JSON.stringify(list));
+      } catch (err) {}
+      success.classList.add('show');
+      form.reset();
+      input.style.borderColor = '';
+    });
+  }
+
+  /* ==========================================================
+     NAV — mobile menu + theme + language toggles
+     ========================================================== */
+  document.addEventListener('DOMContentLoaded', function () {
+    applyThemeIcon();
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      saveTheme(next);
+      applyThemeIcon();
+    });
+
+    applyLang(currentLang());
+    document.getElementById('langToggle').addEventListener('click', function () {
+      applyLang(currentLang() === 'en' ? 'tr' : 'en');
+    });
+
+    var navToggle = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('mobileNav');
+    var openIcon = document.getElementById('menuIconOpen');
+    var closeIcon = document.getElementById('menuIconClose');
+    function closeMenu() {
+      mobileNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      openIcon.classList.remove('is-hidden');
+      closeIcon.classList.add('is-hidden');
+    }
+    navToggle.addEventListener('click', function () {
+      var open = mobileNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      openIcon.classList.toggle('is-hidden', open);
+      closeIcon.classList.toggle('is-hidden', !open);
+    });
+    mobileNav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('click', function (e) {
+      if (!mobileNav.contains(e.target) && !navToggle.contains(e.target)) closeMenu();
+    });
+
+    initCopyEmail();
+    initNotifyForm();
+  });
+})();
+</script>
+
 </body>
 </html>
